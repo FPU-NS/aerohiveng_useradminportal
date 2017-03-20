@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Your organization wifi portal</title>
+<title>SITE TITLE</title>
 <style>
 body {
     background-color: #000000;
@@ -53,10 +53,11 @@ input[type=submit]:hover {
 }
 
 div {
-    width: 500px;
+    width: 275px;
     border-radius: 5px;
     background-color: #f2f2f2;
-    padding: 20px;
+    margin: 5px;
+    padding: 10px;
 }
 input[type=text]:focus {
     background-color: #FFFFFF
@@ -74,26 +75,24 @@ input[type=text]:focus {
 <p>
 
 <div style="float: left;">
-<p>
 Create Credentials
 <p>
 <form action="create.php" method="post">
     First Name:<br /><input type="text" name="firstName" placeholder="first name" pattern="[a-zA-Z]+" autocomplete="off" required><br />
 	Last Name:<br /><input type="text" name="lastName" placeholder="last name" pattern="[a-zA-Z]+" autocomplete="off" required><br />
-    Username:<br /><input type="text" name="userName" placeholder="example user name" autocomplete="off" required><br />
+    Username:<br /><input type="text" name="userName" placeholder="e.g. foi12 or first.last" autocomplete="off" required><br />
     Email:<br /><input type="email" name="email" placeholder="user@email.com" autocomplete="off" required><br />
 	Mobile Phone:<br /><input type="tel" name="phone" pattern="^\d{10}$" placeholder="area code + phone (e.g. 5591234567)" autocomplete="off" required><p>
     Type:<br />
-    <select name="userGroup">
-        <option value="<groupId#>">Student</option>
-        <option value="<groupId#>">Guest</option>
+    <select name="userGroup">	
+        <option value="userGROUP#">Student / Employee Residence</option>
+        <option value="userGROUP#">Guest</option>
     </select>
     <p><input type="submit" name="submit" value="Submit" />
     </form>
 </div>
 
 <div style="float: left;">
-<p>
 Search
 <p>
 <form action="search.php" method="post">
@@ -103,8 +102,8 @@ Search
     <p><input type="submit" name="submit" value="Submit" />
     </form>
 </div>
-<div>
-<p>
+
+<div style="float: left;">
 List All Users
 <p>
 <form action="allusers.php" method="get">
