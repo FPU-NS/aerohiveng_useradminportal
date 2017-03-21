@@ -1,116 +1,51 @@
 <html>
+    
 <head>
-<title>SITE TITLE</title>
-<style>
-body {
-    background-color: #000000;
-}
-</style>
-<style>
-input[type=text], select {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-input[type=email], select {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-input[type=tel], select {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-input[type=submit] {
-    width: 100%;
-    background-color: #0039e6;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-input[type=submit]:hover {
-    background-color: #002db3;
-}
-
-div {
-    width: 275px;
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    margin: 5px;
-    padding: 10px;
-}
-input[type=text]:focus {
-    background-color: #FFFFFF
-    border: 3px solid #000000;
-}
-</style>
-
+<title>ITS Wifi Administration Portal</title>
+<link rel="stylesheet" type="text/css" href="style.css">
 <link href="https://fonts.googleapis.com/css?family=Cutive" rel="stylesheet">
-
 </head>
-<body>
-<font face='Cutive'>    
 
+<body>   
 <img src="logo.jpg">
 <p>
 
-<div style="float: left;">
-Create Credentials
+<div class="index" style="float: left;">
+<b>Create Credentials</b>
 <p>
 <form action="create.php" method="post">
     First Name:<br /><input type="text" name="firstName" placeholder="first name" pattern="[a-zA-Z]+" autocomplete="off" required><br />
 	Last Name:<br /><input type="text" name="lastName" placeholder="last name" pattern="[a-zA-Z]+" autocomplete="off" required><br />
-    Username:<br /><input type="text" name="userName" placeholder="e.g. foi12 or first.last" autocomplete="off" required><br />
+    Username:<br /><input type="text" name="userName" placeholder="username" autocomplete="off" required><br />
     Email:<br /><input type="email" name="email" placeholder="user@email.com" autocomplete="off" required><br />
-	Mobile Phone:<br /><input type="tel" name="phone" pattern="^\d{10}$" placeholder="area code + phone (e.g. 5591234567)" autocomplete="off" required><p>
+	Mobile Phone:<br /><input type="tel" name="phone" pattern="^\d{10}$" placeholder="area code + phone (4601841234)" autocomplete="off" required><p>
     Type:<br />
-    <select name="userGroup">	
-        <option value="userGROUP#">Student / Employee Residence</option>
-        <option value="userGROUP#">Guest</option>
+    <select name="userGroup">
+        <option value="7799660611852">Student | Resident Staff</option>
+        <option value="7799660611659">Guest</option>
     </select>
     <p><input type="submit" name="submit" value="Submit" />
     </form>
 </div>
 
-<div style="float: left;">
-Search
+<div class="index" style="float: left;">
+<b>Search</b>
 <p>
 <form action="search.php" method="post">
     username:<br /><input type="text" name="userName" placeholder="username" autocomplete="off" ><br />
-    mobile phone:<br /><input type="text" name="phone" pattern="^\d{10}$" placeholder="area code + phone (e.g. 5591234567)" autocomplete="off" >
+    mobile phone:<br /><input type="text" name="phone" pattern="^\d{10}$" placeholder="area code + phone (4601841234)" autocomplete="off" >
     email:<br /><input type="email" name="email" placeholder="user@email.com" autocomplete="off" ><br />
     <p><input type="submit" name="submit" value="Submit" />
     </form>
 </div>
 
-<div style="float: left;">
-List All Users
+<div class="index" style="float: left;">
+<b>List</b>
 <p>
-<form action="allusers.php" method="get">
+<form action="list.php" method="get">
     <input type="submit" name="submit" value="Submit" />
     </form>
 </div>
 
-</font>
 </body>
 </html>

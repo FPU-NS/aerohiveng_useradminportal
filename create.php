@@ -1,33 +1,16 @@
 <html>
 <head>
-<title>Credential Creation</title>
-<style>
-body {
-    background-color: #000000;
-}
-a:link, a:visited {
-    background-color: #0039e6;
-    color: white;
-    padding: 14px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-}
-
-
-a:hover, a:active {
-    background-color: #002db3;
-}
-</style>  
-<link href="https://fonts.googleapis.com/css?family=Cutive" rel="stylesheet">  
+<title>Create</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<link href="https://fonts.googleapis.com/css?family=Cutive" rel="stylesheet">
 </head>
 
-<body text="#FFFFFF">
-<font face='Cutive'>
+<body>
 <img src="logo.jpg">
 <p>  
  
-<?php 
+<?php
+include 'tokens.php';  
 curl_setopt($process, CURLOPT_SSL_VERIFYPEER, true);
 $firstName = $_POST["firstName"];
 $lastName = $_POST["lastName"];
@@ -39,7 +22,7 @@ $userGroup = $_POST["userGroup"];
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://cloud-va.aerohive.com/xapi/v1/identity/credentials?ownerId=<OWNERID>",
+  CURLOPT_URL => "https://cloud-va.aerohive.com/xapi/v1/identity/credentials?ownerId=$ownerId",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
   CURLOPT_MAXREDIRS => 10,
@@ -48,12 +31,12 @@ curl_setopt_array($curl, array(
   CURLOPT_CUSTOMREQUEST => "POST",
   CURLOPT_POSTFIELDS => "{\r\n  \"deliverMethod\": \"EMAIL_AND_SMS\",\r\n  \"policy\": \"$policy\",\r\n  \"email\": \"$email\",\r\n  \"firstName\": \"$firstName\",\r\n  \"groupId\": \"$userGroup\",\r\n  \"lastName\": \"$lastName\",\r\n \"phone\": \"1$phone\",\r\n  \"userName\": \"$userName\"\r\n}",
   CURLOPT_HTTPHEADER => array(
-    "authorization: Bearer <APITOKEN-FROMOAUTH2ORHMNGPORTAL>",
+    "authorization: Bearer $guesttoken",
     "cache-control: no-cache",
     "content-type: application/json",
-    "x-ah-api-client-id: <AH-DEV-APP-CLIENTID>",
-    "x-ah-api-client-redirect-uri: <AH-DEV-APP-REDIRECTURI>",
-    "x-ah-api-client-secret: <AH-DEV-APP-CLIENTSECRET>"
+    "x-ah-api-client-id: $clientid",
+    "x-ah-api-client-redirect-uri: $redirecturi",
+    "x-ah-api-client-secret: $clientsecret"
   ),
 ));
 
@@ -71,7 +54,7 @@ if ($err) {
 }
 ?>
 <p>
-<a href="<ORGINALFORMURL>">Return</a>
-</font>
+<a id="returnbutton" href="<?php echo $returnurl ?>">Return</a>
+
 </body>
 </html>

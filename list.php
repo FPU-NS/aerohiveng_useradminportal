@@ -1,8 +1,20 @@
-<?php  
+<html>
+<head>
+<title>List</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<link href="https://fonts.googleapis.com/css?family=Cutive" rel="stylesheet">
+</head>
+
+<body>
+<img src="logo.jpg">
+<p>  
+
+<?php
+include 'tokens.php';  
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://cloud-va.aerohive.com/xapi/v1/identity/credentials?ownerId=<OWNERID>",
+  CURLOPT_URL => "https://cloud-va.aerohive.com/xapi/v1/identity/credentials?ownerId=$ownerId",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
   CURLOPT_MAXREDIRS => 10,
@@ -10,11 +22,11 @@ curl_setopt_array($curl, array(
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => "GET",
   CURLOPT_HTTPHEADER => array(
-    "authorization: Bearer <APITOKEN-FROMOAUTH2ORHMNGPORTAL>",
+    "authorization: Bearer $guesttoken",
     "cache-control: no-cache",
-    "x-ah-api-client-id: <AH-DEV-APP-CLIENTID>",
-    "x-ah-api-client-redirect-uri: <AH-DEV-APP-REDIRECTURI>",
-    "x-ah-api-client-secret: <AH-DEV-APP-CLIENTSECRET>"
+    "x-ah-api-client-id: $clientid",
+    "x-ah-api-client-redirect-uri: $redirecturi",
+    "x-ah-api-client-secret: $clientsecret"
   ),
 ));
 
@@ -31,10 +43,14 @@ $expireTime = $json['data'][0]['expireTime'];
 curl_close($curl);
 
 var_dump($json);
-
-#Working on parsing out a list of users still instead of the dump above
 #foreach ($json as $key => $jsons) {
 #  echo $jsons;
 #}
 
 ?>
+
+<p>
+<a id="returnbutton" href="<?php echo $returnurl ?>">Return</a>
+
+</body>
+</html>

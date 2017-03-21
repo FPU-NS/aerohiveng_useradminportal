@@ -1,54 +1,23 @@
 <html>
 <head>
-<title>Credential Search</title>
-<style>
-body {
-    background-color: #000000;
-}
-a:link, a:visited {
-    background-color: #0039e6;
-    color: white;
-    width: 75px;
-    height:40px;
-    border: none;
-    border-radius: 4px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-}
-
-
-a:hover, a:active {
-    background-color: #002db3;
-}
-
-input[type=submit] {
-    width: 75px;
-    height:40px;
-    background-color: #0039e6;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-</style>  
-<link href="https://fonts.googleapis.com/css?family=Cutive" rel="stylesheet">  
+<title>Search</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cutive">  
 </head>
 
-<body text="#FFFFFF">
-<font face='Cutive'>
-<img src="logo.jpg">
+<body>
+<img src="logo.jpg" valign="top">
 <p> 
 
 <?php
+include 'tokens.php';
 $phone = $_POST["phone"];
 $userName = $_POST["userName"];
 $email = $_POST["email"];
 $curl = curl_init();
-$URL = "https://cloud-va.aerohive.com/xapi/v1/identity/credentials?ownerId=<OWNERID>&phone=1$phone&userName=$userName&email=$email";
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "$URL",
+  CURLOPT_URL => "https://cloud-va.aerohive.com/xapi/v1/identity/credentials?ownerId=$ownerId&phone=1$phone&userName=$userName&email=$email",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
   CURLOPT_MAXREDIRS => 10,
@@ -56,11 +25,11 @@ curl_setopt_array($curl, array(
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => "GET",
   CURLOPT_HTTPHEADER => array(
-    "authorization: Bearer <APITOKEN-FROMOAUTH2ORHMNGPORTAL>",
+    "authorization: Bearer $guesttoken",
     "cache-control: no-cache",
-    "x-ah-api-client-id: <AH-DEV-APP-CLIENTID>",
-    "x-ah-api-client-redirect-uri: <AH-DEV-APP-REDIRECTURI>",
-    "x-ah-api-client-secret: <AH-DEV-APP-CLIENTSECRET>"
+    "x-ah-api-client-id: $clientid",
+    "x-ah-api-client-redirect-uri: $redirecturi",
+    "x-ah-api-client-secret: $clientsecret"
   ),
 ));
 
@@ -76,9 +45,9 @@ $ssids = $json['data'][0]['ssids'][0];
 $createTime = $json['data'][0]['createTime'];
 $expireTime = $json['data'][0]['expireTime'];
 
-if ($groupId == "groupIdnumber") {
+if ($groupId == "7799660611852") {
   $type = "student";
-} elseif ($groupId == "groupIdnumber") { 
+} elseif ($groupId == "7799660611659") { 
   $type = "guest";
 } else { 
   $type = "Not Found or Unknown Error";
@@ -131,27 +100,26 @@ Expiration:
 <?php
   echo $expireTime;
 ?>    
-<div style="float: left;">
-<p>
-<a href="<ORGINALFORMURL>">Return</a>
+
+<div class="buttons">
+<a id="returnbutton" href="<?php echo $returnurl ?>">Return</a>
 </div>
 
-<div style="float: left;">
+<div class="buttons">
 <form action="renew.php" method="post" onsubmit="return confirm('Are you sure you want to renew <?php echo htmlspecialchars($userName); ?>?');">
 <input type="hidden" name="userName" value="<?php echo htmlspecialchars($userName); ?>">
 <input type="hidden" name="id" value="<?php echo htmlspecialchars($id); ?>">
-<input type="submit" name="submit" value="Renew" />
+<input id="buttons" type="submit" name="submit" value="Renew">
 </form>
 </div>
 
-<div style="float: left;">
-<form action="delete.php" method="post" onsubmit="return confirm('Are you sure you want to delete <?php echo htmlspecialchars($userName); ?>?');">
+<div class="buttons">
+<form  action="delete.php" method="post" onsubmit="return confirm('Are you sure you want to delete <?php echo htmlspecialchars($userName); ?>?');">
 <input type="hidden" name="userName" value="<?php echo htmlspecialchars($userName); ?>">
 <input type="hidden" name="id" value="<?php echo htmlspecialchars($id); ?>">
-<input type="submit" name="submit" value="Delete" />
+<input id="buttons" type="submit" name="submit" value="Delete" />
 </form>
 </div>
 
-</font>
 </body>
 </html>
