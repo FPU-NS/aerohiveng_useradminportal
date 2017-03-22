@@ -121,5 +121,23 @@ Expiration:
 </form>
 </div>
 
+<div class="buttons">
+<form action="email.php" method="post" onsubmit="return confirm('Are you sure you want to email the credentials for <?php echo htmlspecialchars($userName); ?> to <?php echo htmlspecialchars($email); ?>?');">
+<input type="hidden" name="userName" value="<?php echo htmlspecialchars($userName); ?>">
+<input type="hidden" name="id" value="<?php echo htmlspecialchars($id); ?>">
+<input type="hidden" name="email" value="<?php echo htmlspecialchars($email); ?>">
+<input id="buttons" type="submit" name="submit" value="Email">
+</form>
+</div>
+
+<div class="buttons">
+<form action="sms.php" method="post" onsubmit="return confirm('Are you sure you want to send an SMS containing the credentials for <?php echo htmlspecialchars($userName); ?> to <?php echo htmlspecialchars($phone); ?>?');">
+<input type="hidden" name="userName" value="<?php echo htmlspecialchars($userName); ?>">
+<input type="hidden" name="id" value="<?php echo htmlspecialchars($id); ?>">
+<input type="hidden" name="phone" value="<?php echo htmlspecialchars($phone); ?>">
+<input id="buttons" type="submit" name="submit" value="SMS">
+</form>
+</div>
+
 </body>
 </html>
