@@ -40,6 +40,19 @@
 </div>
 
 <div class="index" style="float: left;">
+<b>Bulk Create (guests)</b>
+<p>
+<form action="bulk.php" method="post">
+    count:<br /><input type="number" name="count" placeholder="number of users to create" autocomplete="off" ><br />
+    prefix:<br /><input type="text" name="userNamePrefix" maxlength="6" placeholder="prefix02, prefix03, prefix04" autocomplete="off" >
+    email:<br /><input type="email" name="email" placeholder="email to receive spreadsheet" autocomplete="off" ><br />
+    organization:<br /><input type="text" name="organization" maxlength="25" placeholder="organization" autocomplete="off" ><br />
+    <input type="hidden" name="groupId" value="groupId">
+    <p><input type="submit" name="submit" value="Submit" />
+    </form>
+</div>
+
+<div class="index" style="float: left;">
 <b>List</b>
 <p>
 <form action="list.php" method="get">
