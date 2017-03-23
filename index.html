@@ -43,7 +43,7 @@
 <b>Bulk Create (guests)</b>
 <p>
 <form action="bulk.php" method="post">
-    count:<br /><input type="number" name="count" placeholder="number of users to create" autocomplete="off" ><br />
+    count:<br /><input type="number" name="count" placeholder="1-50 PPSKs may be created" autocomplete="off" min="1" max="50" ><br />
     prefix:<br /><input type="text" name="userNamePrefix" maxlength="6" placeholder="prefix02, prefix03, prefix04" autocomplete="off" >
     email:<br /><input type="email" name="email" placeholder="email to receive spreadsheet" autocomplete="off" ><br />
     organization:<br /><input type="text" name="organization" maxlength="25" placeholder="organization" autocomplete="off" ><br />
