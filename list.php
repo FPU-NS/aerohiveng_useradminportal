@@ -33,21 +33,61 @@ curl_setopt_array($curl, array(
 $response = curl_exec($curl);
 $json = json_decode($response, true);
 $err = curl_error($curl);
-$userName = $json['data'][0]['userName'];
-$groupId = $json['data'][0]['groupId'];
-$phone = $json['data'][0]['phone'];
-$email = $json['data'][0]['email'];
-$ssids = $json['data'][0]['ssids'][0];
-$createTime = $json['data'][0]['createTime'];
-$expireTime = $json['data'][0]['expireTime'];
+
+#$userName = $json['data'][0]['userName'];
+#$groupId = $json['data'][0]['groupId'];
+#$id = $json['data'][0]['id'];
+#$organization = $json['data'][0]['organization'];
+#$ssids = $json['data'][0]['ssids'][0];
+#$createTime = $json['data'][0]['createTime'];
+#$expireTime = $json['data'][0]['expireTime'];
 curl_close($curl);
 
-var_dump($json);
-#foreach ($json as $key => $jsons) {
-#  echo $jsons;
-#}
+foreach ($json['data'] as $key => $jsons) {
+  foreach ($jsons as $objects) {     
+    echo $objects; 
+  }
+}
 
 ?>
+
+ 
+<!--- <p>
+username: 
+<?php
+#  echo $userName;
+?>
+<br>
+groupId: 
+<?php
+#  echo $groupId;
+?>
+<br>
+credential id: 
+<?php
+#  echo $id;
+?>
+<br>
+organization: 
+<?php
+#  echo $organization;
+?>
+<br>
+ssid(s): 
+<?php
+#  echo $ssids;
+?>  
+<br>
+Creation Time: 
+<?php
+#  echo $createTime;
+?>    
+<br>
+Expiration: 
+<?php
+#  echo $expireTime;
+?>    
+-->
 
 <p>
 <a id="returnbutton" href="<?php echo $returnurl ?>">Return</a>
