@@ -35,14 +35,15 @@ curl_setopt_array($curl, array(
 ));
 
 $response = curl_exec($curl);
+$json = json_decode($response, true);
+$id = $json['data']['id'];
+$expireTime = $json['data']['expireTime'];
 $err = curl_error($curl);
 
 curl_close($curl);
 
 if ($err) {
   echo "cURL Error #:" . $err;
-}  else { 
-     echo $response;
 }
 ?>
 <p>
@@ -50,6 +51,18 @@ if ($err) {
 echo $userName;
 ?>
  has been renewed
+<p>
+Credential ID: 
+<?php
+echo $id;
+?>
+
+<p>
+Expiration:   
+<?php
+echo $expireTime;
+?>
+
 <p>
 <a id="returnbutton" href="<?php echo $returnurl ?>">Return</a>
 
