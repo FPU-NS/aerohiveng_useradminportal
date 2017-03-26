@@ -52,21 +52,13 @@ echo $userName;
 ?>
  has been renewed
 <p>
-<<<<<<< HEAD
-credential id: 
-=======
 Credential ID: 
->>>>>>> origin/master
 <?php
 echo $id;
 ?>
 
 <p>
-<<<<<<< HEAD
-expiration:   
-=======
-Expiration:   
->>>>>>> origin/master
+Expiration:
 <?php
 echo $expireTime;
 ?>
