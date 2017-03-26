@@ -1,7 +1,7 @@
 <html>
     
 <head>
-<title>ITS Wifi Administration Portal</title>
+<title>Wifi Admin Portal</title>
 <link rel="stylesheet" type="text/css" href="style.css">
 <link href="https://fonts.googleapis.com/css?family=Cutive" rel="stylesheet">
 </head>
@@ -9,21 +9,24 @@
 <body>   
 <img src="logo.jpg">
 <p>
-
+Welcome 
+<?php
+    $upn = $_SERVER["HTTP_X_MS_CLIENT_PRINCIPAL_NAME"];
+    echo $upn;
+?>
+   |   <a id="logout" href="/.auth/logout">Logout</a>
+<p>
 <div class="index" style="float: left;">
-<b>Create Credentials</b>
+<b>Create</b>
 <p>
 <form action="create.php" method="post">
-    First Name:<br /><input type="text" name="firstName" placeholder="first name" pattern="[a-zA-Z]+" autocomplete="off" required><br />
-	Last Name:<br /><input type="text" name="lastName" placeholder="last name" pattern="[a-zA-Z]+" autocomplete="off" required><br />
-    Username:<br /><input type="text" name="userName" placeholder="username" autocomplete="off" required><br />
-    Email:<br /><input type="email" name="email" placeholder="user@email.com" autocomplete="off" required><br />
-	Mobile Phone:<br /><input type="tel" name="phone" pattern="^\d{10}$" placeholder="area code + phone (4601841234)" autocomplete="off" required><p>
-    Type:<br />
+    type:<br />
     <select name="userGroup">
-        <option value="groupId">Student | Resident Staff</option>
-        <option value="groupId">Guest</option>
+        <option value="">student | resident staff</option>
+        <option value="">guest</option>
     </select>
+    email:<br /><input type="email" name="email" placeholder="user@email.com" autocomplete="off" required><br />
+    mobile: (optional)<br /><input type="tel" name="phone" pattern="^\d{11}$" placeholder="area code + phone (18001234567)" autocomplete="off" ><p>
     <p><input type="submit" name="submit" value="Submit" />
     </form>
 </div>
@@ -32,9 +35,12 @@
 <b>Search</b>
 <p>
 <form action="search.php" method="post">
-    username:<br /><input type="text" name="userName" placeholder="username" autocomplete="off" ><br />
-    mobile phone:<br /><input type="text" name="phone" pattern="^\d{10}$" placeholder="area code + phone (4601841234)" autocomplete="off" >
-    email:<br /><input type="email" name="email" placeholder="user@email.com" autocomplete="off" ><br />
+    type:<br />
+    <select name="userGroup">
+        <option value="">student | resident staff</option>
+        <option value="">guest</option>
+    </select>
+    email:<br /><input type="text" name="userName" placeholder="user@email.com" autocomplete="off" ><br />
     <p><input type="submit" name="submit" value="Submit" />
     </form>
 </div>
@@ -47,7 +53,7 @@
     prefix:<br /><input type="text" name="userNamePrefix" maxlength="6" placeholder="prefix02, prefix03, prefix04" autocomplete="off" >
     email:<br /><input type="email" name="email" placeholder="email to receive spreadsheet" autocomplete="off" ><br />
     organization:<br /><input type="text" name="organization" maxlength="25" placeholder="organization" autocomplete="off" ><br />
-    <input type="hidden" name="groupId" value="groupId">
+    <input type="hidden" name="groupId" value="">
     <p><input type="submit" name="submit" value="Submit" />
     </form>
 </div>

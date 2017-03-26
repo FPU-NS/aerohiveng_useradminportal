@@ -14,10 +14,10 @@ include 'tokens.php';
 curl_setopt($process, CURLOPT_SSL_VERIFYPEER, true);
 $firstName = $_POST["firstName"];
 $lastName = $_POST["lastName"];
-$email = $_POST["email"];
 $phone = $_POST["phone"];
+$email = $_POST["email"];
 $policy = "GUEST";
-$userName = $_POST["userName"];
+$userName = $_POST["email"];
 $userGroup = $_POST["userGroup"];
 $curl = curl_init();
 
@@ -29,7 +29,7 @@ curl_setopt_array($curl, array(
   CURLOPT_TIMEOUT => 30,
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => "POST",
-  CURLOPT_POSTFIELDS => "{\r\n  \"deliverMethod\": \"EMAIL_AND_SMS\",\r\n  \"policy\": \"$policy\",\r\n  \"email\": \"$email\",\r\n  \"firstName\": \"$firstName\",\r\n  \"groupId\": \"$userGroup\",\r\n  \"lastName\": \"$lastName\",\r\n \"phone\": \"1$phone\",\r\n  \"userName\": \"$userName\"\r\n}",
+  CURLOPT_POSTFIELDS => "{\r\n  \"deliverMethod\": \"EMAIL\",\r\n  \"policy\": \"$policy\",\r\n  \"email\": \"$email\",\r\n  \"firstName\": \"$firstName\",\r\n  \"groupId\": \"$userGroup\",\r\n  \"lastName\": \"$lastName\",\r\n \"phone\": \"$phone\",\r\n \"userName\": \"$userName\"\r\n}",
   CURLOPT_HTTPHEADER => array(
     "authorization: Bearer $guesttoken",
     "cache-control: no-cache",

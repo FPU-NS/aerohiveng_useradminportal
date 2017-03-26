@@ -11,13 +11,13 @@
 
 <?php
 include 'tokens.php';
-$phone = $_POST["phone"];
 $userName = $_POST["userName"];
+$userGroup = $_POST["userGroup"];
 $email = $_POST["email"];
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://cloud-va.aerohive.com/xapi/v1/identity/credentials?ownerId=$ownerId&phone=1$phone&userName=$userName&email=$email",
+  CURLOPT_URL => "https://cloud-va.aerohive.com/xapi/v1/identity/credentials?ownerId=$ownerId&userGroup=$userGroup&userName=$userName&email=$email",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
   CURLOPT_MAXREDIRS => 10,
@@ -45,9 +45,9 @@ $ssids = $json['data'][0]['ssids'][0];
 $createTime = $json['data'][0]['createTime'];
 $expireTime = $json['data'][0]['expireTime'];
 
-if ($groupId == "7799660611852") {
+if ($groupId == "") {
   $type = "student";
-} elseif ($groupId == "7799660611659") { 
+} elseif ($groupId == "") { 
   $type = "guest";
 } else { 
   $type = "Not Found or Unknown Error";
