@@ -17,7 +17,7 @@ $email = $_POST["email"];
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://cloud-va.aerohive.com/xapi/v1/identity/credentials?ownerId=$ownerId&userGroup=$userGroup&userName=$userName&email=$email",
+  CURLOPT_URL => "https://cloud-va.aerohive.com/xapi/v1/identity/credentials?ownerId=$ownerId&userGroup=$userGroup&email=$email",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
   CURLOPT_MAXREDIRS => 10,
@@ -45,9 +45,9 @@ $ssids = $json['data'][0]['ssids'][0];
 $createTime = $json['data'][0]['createTime'];
 $expireTime = $json['data'][0]['expireTime'];
 
-if ($groupId == "") {
+if ($groupId == "GROUPID") {
   $type = "student";
-} elseif ($groupId == "") { 
+} elseif ($groupId == "GROUPID") { 
   $type = "guest";
 } else { 
   $type = "Not Found or Unknown Error";

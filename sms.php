@@ -7,7 +7,7 @@
 
 <body>
 <img src="logo.jpg">
-<p> 
+<p>
 
 <?php
 include 'tokens.php';  
