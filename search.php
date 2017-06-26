@@ -25,7 +25,7 @@ curl_setopt_array($curl, array(
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => "GET",
   CURLOPT_HTTPHEADER => array(
-    "authorization: Bearer $guesttoken",
+    "authorization: Bearer $accesstoken",
     "cache-control: no-cache",
     "x-ah-api-client-id: $clientid",
     "x-ah-api-client-redirect-uri: $redirecturi",
@@ -45,13 +45,16 @@ $ssids = $json['data'][0]['ssids'][0];
 $createTime = $json['data'][0]['createTime'];
 $expireTime = $json['data'][0]['expireTime'];
 
-if ($groupId == "GROUPID") {
+if ($groupId == "7799660613379") {
   $type = "student";
-} elseif ($groupId == "GROUPID") { 
+} elseif ($groupId == "7799660614032") { 
   $type = "guest";
+} elseif ($groupId == "7799660614619") { 
+  $type = "bulk guest";
 } else { 
   $type = "Not Found or Unknown Error";
 }
+
 
 curl_close($curl);
 

@@ -16,7 +16,6 @@ $userNamePrefix = $_POST["userNamePrefix"];
 $organization = $_POST["organization"];
 $email = $_POST["email"];
 $groupId = $_POST["groupId"];
-$policy = "GUEST";
 
 $curl = curl_init();
 
@@ -30,7 +29,7 @@ curl_setopt_array($curl, array(
   CURLOPT_CUSTOMREQUEST => "POST",
   CURLOPT_POSTFIELDS => "{\r\n  \"count\": $count,\r\n  \"offset\": $count,\r\n  \"deliverMethod\": \"EMAIL\",\r\n  \"email\": \"$email\",\r\n  \"groupId\": $groupId,\r\n  \"organization\": \"$organization\",\r\n  \"policy\": \"$policy\",\r\n  \"userNamePrefix\": \"$userNamePrefix\"\r\n}",
   CURLOPT_HTTPHEADER => array(
-    "authorization: Bearer $guesttoken",
+    "authorization: Bearer $accesstoken",
     "cache-control: no-cache",
     "content-type: application/json",
     "x-ah-api-client-id: $clientid",

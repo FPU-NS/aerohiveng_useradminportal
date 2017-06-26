@@ -22,11 +22,11 @@ Welcome
 <form action="create.php" method="post">
     type:<br />
     <select name="userGroup">
-        <option value="GROUPID">student</option>
-        <option value="GROUPID">guest</option>
+        <option value="">student</option>
+        <option value="">guest</option>
     </select>
     email:<br /><input type="email" name="email" placeholder="user@email.com" autocomplete="off" required><br />
-    mobile: (optional)<br /><input type="tel" name="phone" pattern="^\d{11}$" placeholder="area code + phone (15591234567)" autocomplete="off" ><p>
+    mobile: (optional)<br /><input type="tel" name="phone" pattern="^\d{10}$" placeholder="area + phone ()" autocomplete="off" ><p>
     <p><input type="submit" name="submit" value="Submit" />
     </form>
 </div>
@@ -37,8 +37,9 @@ Welcome
 <form action="search.php" method="post">
     type:<br />
     <select name="userGroup">
-        <option value="GROUPID">student</option>
-        <option value="GROUPID">guest</option>
+        <option value="">student</option>
+        <option value="">guest</option>
+        <option value="">bulk guest</option>
     </select>
     email:<br /><input type="text" name="email" placeholder="user@email.com" autocomplete="off" ><br />
     <p><input type="submit" name="submit" value="Submit" />
@@ -59,7 +60,7 @@ Welcome
     prefix:<br /><input type="text" name="userNamePrefix" maxlength="6" placeholder="prefix02, prefix03, prefix04" autocomplete="off" >
     email:<br /><input type="email" name="email" placeholder="email to receive spreadsheet" autocomplete="off" ><br />
     organization:<br /><input type="text" name="organization" maxlength="25" placeholder="organization" autocomplete="off" ><br />
-    <input type="hidden" name="groupId" value="GROUPID">
+    <input type="hidden" name="groupId" value="">
     <p><input type="submit" name="submit" value="Submit" />
     </form>
 </div>
@@ -67,12 +68,12 @@ Welcome
 <div class="index" style="float: left;">
 <b>List</b>
 <font size="1">
-<p>This will list all users that this portal can create. Staff, Lab, and other accounts can only be created by Network Services.
+<p>This will list all users that this portal can create.
 </font>
 <p>
 <form action="list.php" method="get">
-    <input type="submit" name="submit" value="Submit" />
-    </form>
+<input type="submit" name="submit" value="Submit" />
+</form>
 </div>
 
 </body>
